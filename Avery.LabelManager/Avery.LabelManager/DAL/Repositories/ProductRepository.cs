@@ -1,9 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using Avery.LabelManager.DAL.Models;
+﻿using Avery.LabelManager.DAL.Models;
 using Avery.LabelManager.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +12,6 @@ namespace Avery.LabelManager.DAL.Repositories
 
 
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
+        private AveryDbContext _appContext => (AveryDbContext)Context;
     }
 }

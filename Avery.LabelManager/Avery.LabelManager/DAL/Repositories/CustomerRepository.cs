@@ -14,7 +14,7 @@ namespace Avery.LabelManager.DAL.Repositories
 {
     public class CustomerRepository : Repository<Customer>, ICustomerRepository
     {
-        public CustomerRepository(ApplicationDbContext context) : base(context)
+        public CustomerRepository(AveryDbContext context) : base(context)
         { }
 
 
@@ -35,6 +35,6 @@ namespace Avery.LabelManager.DAL.Repositories
 
 
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
+        private AveryDbContext _appContext => (AveryDbContext)Context;
     }
 }

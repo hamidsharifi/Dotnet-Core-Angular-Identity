@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Avery.LabelManager.DAL
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class AveryDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public string CurrentUserId { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -23,9 +23,10 @@ namespace Avery.LabelManager.DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
+        public DbSet<Report> Reports { get; set; }
 
 
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public AveryDbContext(DbContextOptions options) : base(options)
         { }
 
 

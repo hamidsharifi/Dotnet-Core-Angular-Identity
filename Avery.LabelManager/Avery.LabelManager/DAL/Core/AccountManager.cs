@@ -18,13 +18,13 @@ namespace Avery.LabelManager.DAL.Core
 {
     public class AccountManager : IAccountManager
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AveryDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
 
 
         public AccountManager(
-            ApplicationDbContext context,
+            AveryDbContext context,
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager,
             IHttpContextAccessor httpAccessor)

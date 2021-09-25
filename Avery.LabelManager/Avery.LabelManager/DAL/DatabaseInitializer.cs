@@ -25,11 +25,11 @@ namespace Avery.LabelManager.DAL
 
     public class DatabaseInitializer : IDatabaseInitializer
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AveryDbContext _context;
         private readonly IAccountManager _accountManager;
         private readonly ILogger _logger;
 
-        public DatabaseInitializer(ApplicationDbContext context, IAccountManager accountManager, ILogger<DatabaseInitializer> logger)
+        public DatabaseInitializer(AveryDbContext context, IAccountManager accountManager, ILogger<DatabaseInitializer> logger)
         {
             _accountManager = accountManager;
             _context = context;

@@ -17,6 +17,6 @@ namespace Avery.LabelManager.DAL.Repositories
 
 
 
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
+        private AveryDbContext _appContext => (AveryDbContext)Context;
     }
 }

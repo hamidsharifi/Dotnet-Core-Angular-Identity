@@ -1,9 +1,4 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using Avery.LabelManager.DAL.Repositories.Interfaces;
+﻿using Avery.LabelManager.DAL.Repositories.Interfaces;
 
 namespace Avery.LabelManager.DAL
 {
@@ -12,7 +7,7 @@ namespace Avery.LabelManager.DAL
         ICustomerRepository Customers { get; }
         IProductRepository Products { get; }
         IOrdersRepository Orders { get; }
-
+        IReportRepository Reports { get; }
 
         int SaveChanges();
     }

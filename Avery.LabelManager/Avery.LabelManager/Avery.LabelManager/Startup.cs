@@ -1,13 +1,5 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using AutoMapper;
 using Avery.LabelManager.Authorization;
 using Avery.LabelManager.Helpers;
-using DAL;
-using DAL.Core;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -32,13 +24,13 @@ namespace Avery.LabelManager
 {
     public class Startup
     {
-        private IWebHostEnvironment _env { get; }
+        private IWebHostEnvironment Env { get; }
         public IConfiguration Configuration { get; }
 
 
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
-            _env = env;
+            Env = env;
             Configuration = configuration;
         }
 
@@ -49,13 +41,7 @@ namespace Avery.LabelManager
             // Enable logging of potential PII messages (Personally Identifiable Information)
             //Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("Avery.LabelManager")));
-
-            // add identity
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddDbServices(Configuration);
 
             // Configure Identity options and password complexity here
             services.Configure<IdentityOptions>(options =>
@@ -75,7 +61,7 @@ namespace Avery.LabelManager
                 //    //options.Lockout.MaxFailedAccessAttempts = 10;
             });
 
-
+            //TODO: need to change IdentityService to be persistent
             // Adds IdentityServer.
             services.AddIdentityServer()
                 // The AddDeveloperSigningCredential extension creates temporary key material for signing tokens.
@@ -106,14 +92,14 @@ namespace Avery.LabelManager
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(Authorization.Policies.ViewAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewUsers));
-                options.AddPolicy(Authorization.Policies.ManageAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageUsers));
+                options.AddPolicy(Policies.ViewAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewUsers));
+                options.AddPolicy(Policies.ManageAllUsersPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageUsers));
 
-                options.AddPolicy(Authorization.Policies.ViewAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewRoles));
-                options.AddPolicy(Authorization.Policies.ViewRoleByRoleNamePolicy, policy => policy.Requirements.Add(new ViewRoleAuthorizationRequirement()));
-                options.AddPolicy(Authorization.Policies.ManageAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageRoles));
+                options.AddPolicy(Policies.ViewAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ViewRoles));
+                options.AddPolicy(Policies.ViewRoleByRoleNamePolicy, policy => policy.Requirements.Add(new ViewRoleAuthorizationRequirement()));
+                options.AddPolicy(Policies.ManageAllRolesPolicy, policy => policy.RequireClaim(ClaimConstants.Permission, AppPermissions.ManageRoles));
 
-                options.AddPolicy(Authorization.Policies.AssignAllowedRolesPolicy, policy => policy.Requirements.Add(new AssignRolesAuthorizationRequirement()));
+                options.AddPolicy(Policies.AssignAllowedRolesPolicy, policy => policy.Requirements.Add(new AssignRolesAuthorizationRequirement()));
             });
 
 

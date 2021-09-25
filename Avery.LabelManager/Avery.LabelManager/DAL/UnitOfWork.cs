@@ -1,24 +1,19 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using Avery.LabelManager.DAL.Repositories;
+﻿using Avery.LabelManager.DAL.Repositories;
 using Avery.LabelManager.DAL.Repositories.Interfaces;
 
 namespace Avery.LabelManager.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {
-        readonly ApplicationDbContext _context;
+        readonly AveryDbContext _context;
 
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
+        IReportRepository _reports;
 
 
-
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(AveryDbContext context)
         {
             _context = context;
         }
@@ -62,7 +57,18 @@ namespace Avery.LabelManager.DAL
             }
         }
 
+        public IReportRepository Reports
+        {
+            get
+            {
+                if (_reports == null)
+                {
+                    _reports = new ReportRepository(_context);
+                }
 
+                return _reports;
+            }
+        }
 
 
         public int SaveChanges()
