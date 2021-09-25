@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avery.LabelManager", "Avery.LabelManager\Avery.LabelManager\Avery.LabelManager.csproj", "{1EB8D4E8-42B2-43EA-8216-A372F4615DDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avery.LabelManager.DAL", "Avery.LabelManager\DAL\Avery.LabelManager.DAL.csproj", "{D6FFC6BA-4F2D-4966-B7A9-8B0667B04F68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EB8D4E8-42B2-43EA-8216-A372F4615DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB8D4E8-42B2-43EA-8216-A372F4615DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB8D4E8-42B2-43EA-8216-A372F4615DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB8D4E8-42B2-43EA-8216-A372F4615DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6FFC6BA-4F2D-4966-B7A9-8B0667B04F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6FFC6BA-4F2D-4966-B7A9-8B0667B04F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6FFC6BA-4F2D-4966-B7A9-8B0667B04F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6FFC6BA-4F2D-4966-B7A9-8B0667B04F68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC2B1203-B867-4B20-B9BC-3C0BE205045E}
+	EndGlobalSection
+EndGlobal
