@@ -30,7 +30,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/quickapp'),
+      dir: require('path').join(__dirname, './coverage/avery_label_manager'),
       subdir: '.',
       reporters: [
         { type: 'html' },

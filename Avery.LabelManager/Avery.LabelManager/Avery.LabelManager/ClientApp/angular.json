@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "quickapp": {
+    "avery_label_manager": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "quickapp:build"
+            "browserTarget": "avery_label_manager:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "quickapp:build:production"
+              "browserTarget": "avery_label_manager:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "quickapp:build"
+            "browserTarget": "avery_label_manager:build"
           }
         },
         "test": {
@@ -117,16 +117,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "quickapp:serve"
+            "devServerTarget": "avery_label_manager:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "quickapp:serve:production"
+              "devServerTarget": "avery_label_manager:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "quickapp"
+  "defaultProject": "avery_label_manager"
 }

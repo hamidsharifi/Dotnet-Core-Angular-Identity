@@ -18,8 +18,8 @@ import { LoginResponse } from '../models/login-response.model';
 export class OidcHelperService {
 
     private get baseUrl() { return this.configurations.baseUrl; }
-    private clientId = 'quickapp_spa';
-    private scope = 'openid email phone profile offline_access roles quickapp_api';
+    private clientId = 'avery_label_manager_spa';
+    private scope = 'openid email phone profile offline_access roles avery_label_manager_api';
 
     constructor(
         private http: HttpClient,

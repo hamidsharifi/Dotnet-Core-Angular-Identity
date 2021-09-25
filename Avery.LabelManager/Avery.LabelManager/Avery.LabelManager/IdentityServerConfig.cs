@@ -15,9 +15,9 @@ namespace Avery.LabelManager
 {
     public class IdentityServerConfig
     {
-        public const string ApiName = "quickapp_api";
+        public const string ApiName = "avery_label_manager_api";
         public const string ApiFriendlyName = "Avery.LabelManager API";
-        public const string QuickAppClientID = "quickapp_spa";
+        public const string AveryLabelManagerClientID = "avery_label_manager_spa";
         public const string SwaggerClientID = "swaggerui";
 
         // Identity resources (used by UserInfo endpoint).
@@ -70,7 +70,7 @@ namespace Avery.LabelManager
                 // http://docs.identityserver.io/en/release/reference/client.html.
                 new Client
                 {
-                    ClientId = QuickAppClientID,
+                    ClientId = AveryLabelManagerClientID,
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, // Resource Owner Password Credential grant.
                     AllowAccessTokensViaBrowser = true,
                     RequireClientSecret = false, // This client does not need a secret to request tokens from the token endpoint.

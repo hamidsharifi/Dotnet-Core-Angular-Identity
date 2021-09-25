@@ -10,11 +10,11 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <Description>ASPNET Core 5.0 - Angular 11 startup template for Quick Application Development</Description>
-    <Copyright>Copyright © 2019 www.ebenmonney.com</Copyright>
-    <PackageProjectUrl>https://www.ebenmonney.com/quickapp</PackageProjectUrl>
-    <Company>EBENMONNEY</Company>
-    <Version>5.0.0</Version>
+    <Description>Avery Label Manager application</Description>
+    <Copyright>Copyright © 2021 www.surepayd.com</Copyright>
+    <PackageProjectUrl>https://www.surepayd.com</PackageProjectUrl>
+    <Company>SUREPAYD</Company>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
