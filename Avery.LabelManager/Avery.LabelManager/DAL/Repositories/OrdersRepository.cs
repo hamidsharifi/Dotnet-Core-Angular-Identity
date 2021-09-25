@@ -1,7 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 using Avery.LabelManager.DAL.Models;
 using Avery.LabelManager.DAL.Repositories.Interfaces;

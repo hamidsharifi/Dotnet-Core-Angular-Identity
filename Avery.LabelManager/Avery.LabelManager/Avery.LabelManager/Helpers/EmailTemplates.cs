@@ -1,7 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.FileProviders;

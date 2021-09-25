@@ -1,14 +1,6 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
-
-using Avery.LabelManager.Helpers;
-using DAL.Core;
+﻿using Avery.LabelManager.Helpers;
 using Microsoft.AspNetCore.Authorization;
-using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Avery.LabelManager.DAL.Core;
 

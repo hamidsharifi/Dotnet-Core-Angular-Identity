@@ -1,7 +1,7 @@
-﻿// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+﻿
+
+
+
 
 namespace Avery.LabelManager.DAL.Core
 {

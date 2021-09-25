@@ -1,7 +1,7 @@
-// =============================
-// Email: info@ebenmonney.com
-// www.ebenmonney.com/templates
-// =============================
+
+
+
+
 
 // tslint:disable:no-console
 import { Injectable } from '@angular/core';
