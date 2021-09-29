@@ -20,6 +20,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="21.1.5" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />
     <PackageReference Include="IdentityServer.ExtensionGrant.Delegation" Version="1.0.1" />
     <PackageReference Include="IdentityServer4" Version="4.1.2" />
@@ -33,6 +35,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.113" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
   </ItemGroup>
@@ -62,6 +65,23 @@
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="ClientApp\dist\**" />
     <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="PredefinedReports\Numeric1SideTab.vsrepx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="PredefinedReports\Numeric1SideTab.vsrepx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="PredefinedReports\Numeric1SideTab.cs">
+      <DependentUpon>Numeric1SideTab.vsrepx</DependentUpon>
+    </Compile>
+    <Compile Update="PredefinedReports\Numeric1SideTab.Designer.cs">
+      <DependentUpon>Numeric1SideTab.vsrepx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

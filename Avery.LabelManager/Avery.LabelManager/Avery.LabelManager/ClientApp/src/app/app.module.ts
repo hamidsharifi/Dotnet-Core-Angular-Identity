@@ -1,8 +1,4 @@
-
-
-
-
-
+import { DxReportDesignerModule, DxReportViewerModule } from 'devexpress-reporting-angular';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +15,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppErrorHandler } from './app-error.handler';
@@ -51,10 +46,11 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ReportDesignerComponent } from './components/reportdesigner/report-designer';
+import { ReportViewerComponent } from './components/reportviewer/report-viewer';
 
 import { BannerDemoComponent } from './components/controls/banner-demo.component';
 import { TodoDemoComponent } from './components/controls/todo-demo.component';
-import { StatisticsDemoComponent } from './components/controls/statistics-demo.component';
 import { NotificationsViewerComponent } from './components/controls/notifications-viewer.component';
 import { SearchBoxComponent } from './components/controls/search-box.component';
 import { UserInfoComponent } from './components/controls/user-info.component';
@@ -62,11 +58,14 @@ import { UserPreferencesComponent } from './components/controls/user-preferences
 import { UsersManagementComponent } from './components/controls/users-management.component';
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    DxReportViewerModule,
+    DxReportDesignerModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
@@ -85,8 +84,7 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     PopoverModule.forRoot(),
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
-    ModalModule.forRoot(),
-    ChartsModule
+    ModalModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -102,13 +100,15 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,
-    StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
+    TodoDemoComponent, BannerDemoComponent,
     EqualValidator,
     LastElementDirective,
     AutofocusDirective,
     BootstrapTabDirective,
     BootstrapToggleDirective,
-    GroupByPipe
+    GroupByPipe,
+    ReportViewerComponent,
+    ReportDesignerComponent
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
@@ -122,9 +122,20 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     AccountService,
     AccountEndpoint,
     LocalStoreManager,
-    OidcHelperService
+    OidcHelperService,
+    { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
+export function getBaseUrl() {
+  return '/';
+}
+
+const providers = [
+  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
+];
+platformBrowserDynamic(providers).bootstrapModule(AppModule)
+  .catch(err => console.log(err));

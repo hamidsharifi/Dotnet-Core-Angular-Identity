@@ -81,10 +81,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Avery.LabelManager'`, () => {
+  it(`should have as title 'FilePro'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance as AppComponent;
-    expect(app.appTitle).toEqual('Avery.LabelManager');
+    expect(app.appTitle).toEqual('FilePro');
   });
 
   it('should render Loaded! in a h1 tag', () => {

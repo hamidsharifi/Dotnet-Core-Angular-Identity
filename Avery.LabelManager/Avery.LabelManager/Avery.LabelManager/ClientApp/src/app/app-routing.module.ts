@@ -17,6 +17,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { Utilities } from './services/utilities';
+import { ReportDesignerComponent } from "src/app/components/reportdesigner/report-designer";
+import { ReportViewerComponent } from "src/app/components/reportviewer/report-viewer";
 
 
 @Injectable()
@@ -50,7 +52,9 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], data: { title: 'Settings' } },
   { path: 'about', component: AboutComponent, data: { title: 'About Us' } },
   { path: 'home', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', component: NotFoundComponent, data: { title: 'Page Not Found' } }
+  { path: 'designer', component: ReportDesignerComponent },
+  { path: 'viewer', component: ReportViewerComponent },
+  { path: '**', component: NotFoundComponent, data: { title: 'Page Not Found' } },  
 ];
 
 

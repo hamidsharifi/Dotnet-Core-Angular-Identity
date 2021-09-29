@@ -10,7 +10,9 @@
     "Products": "Products",
     "Orders": "Orders",
     "About": "About",
-    "Logout": "Logout"
+    "Logout": "Logout",
+    "Viewer": "Viewer",
+    "Designer": "Designer" 
   },
   "pageHeader": {
     "Dashboard": "Dashboard",

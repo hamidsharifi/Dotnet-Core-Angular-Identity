@@ -28,6 +28,12 @@
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/about">{{'mainMenu.About' | translate}}</a>
           </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/viewer">{{'mainMenu.Viewer' | translate}}</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="canViewCustomers">
+            <a class="nav-link" routerLink="/designer">{{'mainMenu.Designer' | translate}}</a>
+          </li>
         </ul>
         <ul class="app-component nav nav-pills flex-column flex-lg-row mr-md-2">
           <li class="nav-item" routerLinkActive="active">
@@ -72,7 +78,7 @@
         Loaded!
       </h1>
       <p>
-        AVERY LABEL MANAGER
+        FilePro
       </p>
 
     </div>

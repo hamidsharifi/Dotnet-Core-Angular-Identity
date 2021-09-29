@@ -18,7 +18,15 @@ using Avery.LabelManager.DAL;
 using Avery.LabelManager.DAL.Core;
 using Avery.LabelManager.DAL.Core.Interfaces;
 using Avery.LabelManager.DAL.Models;
+using Avery.LabelManager.Services;
 using AppPermissions = Avery.LabelManager.DAL.Core.ApplicationPermissions;
+using DevExpress.AspNetCore;
+using DevExpress.AspNetCore.Reporting;
+using DevExpress.XtraReports.Web.Extensions;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Avery.LabelManager
 {
@@ -42,6 +50,16 @@ namespace Avery.LabelManager
             //Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 
             services.AddDbServices(Configuration);
+
+            services.AddDevExpressControls();
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+            services.ConfigureReportingServices(configurator => {
+                configurator.ConfigureWebDocumentViewer(viewerConfigurator => {
+                    viewerConfigurator.UseCachedReportSourceBuilder();
+                });
+            });
 
             // Configure Identity options and password complexity here
             services.Configure<IdentityOptions>(options =>
@@ -154,6 +172,7 @@ namespace Avery.LabelManager
             services.AddSingleton<IAuthorizationHandler, ManageUserAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, ViewRoleAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, AssignRolesAuthorizationHandler>();
+            services.AddScoped<ReportStorageWebExtension, CustomReportStorageWebExtension>();
 
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
@@ -163,6 +182,9 @@ namespace Avery.LabelManager
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseDevExpressControls();
+            System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
+
             Utilities.ConfigureLogger(loggerFactory);
             EmailTemplates.Initialize(env);
 
